@@ -1,11 +1,3 @@
-<?php  if (! defined('BASEPATH')) exit('No direct script access allowed');
-class MY_Controller extends Controller {
-	function __construct(){
-		echo 'MY';
-		parent::Controller();
-	}
-}
-// END _Controller class
+<?php (defined('BASEPATH')) OR exit('No direct script access allowed');
 
-/* End of file Controller.php */
-/* Location: ./system/libraries/Controller.php */
+/* The MX_Controller class is autoloaded as required */
