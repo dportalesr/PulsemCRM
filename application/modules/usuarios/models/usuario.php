@@ -3,8 +3,8 @@
 class Usuario extends CI_Model {
 	
 	private   $salt_length    = '10';
-	protected $tabla_usuarios = 'credito_usuarios';
-	protected $tabla_ips      = 'credito_ips';
+	protected $tabla_usuarios = 'usuarios';
+	protected $tabla_ips      = 'ips';
 	
 	public function __construct() {
 		parent::__construct();
@@ -22,7 +22,7 @@ class Usuario extends CI_Model {
 	    }
 
 	    $salt = $this->salt();
-	    return = $salt . substr(sha1($salt . $password), 0, -$this->salt_length);
+	    return $salt . substr(sha1($salt . $password), 0, -$this->salt_length);
 	}
 
 	private function to_hash($password, $almacenado)
@@ -87,10 +87,34 @@ class Usuario extends CI_Model {
 			if($query->num_rows() == 1){
 				$datos = $query->row();
 				$guardado = $this->to_hash($pass, $datos->pass);
-				if($pas == $guardado){
-
+				if($pass == $guardado){
+					return $datos;
 				}
 			}
 		}
+		
+		return FALSE;
+	}
+	
+	public function recuperar($correo)
+	{
+		$query = $this->db->where('correo', $correo)->limit(1)->get($this->tabla_usuarios);
+		if($query->num_rows()){
+			return $query->row();
+		}else{
+			return FALSE;
+		}
+	}
+	
+	public function reset_pass($id, $pass)
+	{
+		$pass = $this->hash_password($pass);
+		$this->db->where('idusuario', $id)->update($this->tabla_usuarios, array('pass' => $pass));
+	}
+	
+	public function reactivacion($id, $pass)
+	{
+		$query = $this->db->where('idusuario', $id)->where('pass', $pass)->limit(1)->get($this->tabla_usuarios);
+		return $query->num_rows();
 	}
 }
