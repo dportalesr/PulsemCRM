@@ -1,34 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<!DOCTYPE HTML>
+<html lang="es-mx">
 <head>
-<title><?=#$sitename_for_layout?> | <?=#$title_for_layout?></title>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<meta name="Title" content="<?=#$sitename_for_layout?>" />
-<meta name="Author" content="Pulsem" />
-<meta name="Generator" content="daetherius" />
-<meta name="Language" content="Spanish" /> 
-<meta name="Robots" content="Index" />
-<?=$_styles?> 
+	<meta charset="UTF-8">
+	<title>Pulsem CodeIgniter - <?php echo $titulo; ?></title>
+	<link type="text/css" rel="stylesheet" href="/pulsem/assets/css/reset.css" />
+	<link type="text/css" rel="stylesheet" href="/pulsem/assets/css/960.css" />
+	<link type="text/css" rel="stylesheet" href="/pulsem/assets/css/text.css" />
+	<?php echo $_styles; ?>
+	
+	<?php echo $_scripts; ?>
+	
 </head>
-<body class="<?=#$this->params['controller']?>">
-	<div id="nofooter">
-		<div id="header">
-			<a id="logo" href="/" title="<?=#$sitename_for_layout?>"></a>
-			<div id="menu"><?=#$this->element('menu')?></div>
-		</div>
-		<div id="body"><?=$content?></div>
-		<div id="cleaner"></div>
-	</div><!-- end: #page -->
-	<?
-	echo
-		#$this->element('footer'),
-		#$html->script(array('moo124','moo124m','utils','pulsembox')),
-		$_scripts
-		#$moo->writeBuffer(array('onDomReady'=>false))
-		//,$this->element('gfont',array('fonts'=>array('Cantarell','Droid+Serif')));
-		;
-	?>
+<body>
+	<?php echo $contenido; ?>
+	
 </body>
 </html>
