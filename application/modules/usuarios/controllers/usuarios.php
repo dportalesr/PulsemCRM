@@ -8,10 +8,10 @@
  * @version 0.1.1
  **/
  
-class Usuarios extends Controller {
+class Usuarios extends CI_Controller {
 
 	public function __construct() {
-		parent::Controller();
+		parent::__construct();
 	}
 	
 	public function index() {
